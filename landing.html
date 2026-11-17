@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10213d">
+  <meta name="description" content="Practice NIOSH SHO Module 1 legislation with interactive topic-based quizzes.">
+  <title>SHO Legislation Practice | NIOSH Module 1</title>
+  <link rel="stylesheet" href="landing.css">
+  <script src="landing.js" defer></script>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <nav class="topbar" aria-label="Main navigation">
+        <a class="brand" href="landing.html"><span class="brand-mark">SHO</span><span>Study Hub</span></a>
+        <a class="nav-link" href="index.html">Open full quiz ↗</a>
+      </nav>
+      <div class="hero-content">
+        <p class="eyebrow">NIOSH Malaysia · Safety and Health Officer · Module 1</p>
+        <h1 id="page-title">Know the law.<br><span>Practice with purpose.</span></h1>
+        <p class="hero-copy">Build confidence with focused practice on legislation and codes of practice relevant to safety and health officers.</p>
+        <a class="primary-link" href="#topics">Choose a topic <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-decoration" aria-hidden="true"><span>01</span><span>02</span><span>03</span></div>
+    </section>
+
+    <section class="topics" id="topics" aria-labelledby="topics-title">
+      <div class="section-heading">
+        <div><p class="eyebrow eyebrow-dark">Your practice plan</p><h2 id="topics-title">Choose a topic</h2></div>
+        <p>Pick a group to focus the quiz. Your answers are scored as you go.</p>
+      </div>
+      <div class="topic-grid">
+        <button class="topic-card core-card" type="button" data-filter="PSMA Core">
+          <span class="topic-number">CORE · 10 QUESTIONS</span><span class="topic-title">Petroleum (Safety Measures) Act</span><span class="topic-description">Core definitions, handling, storage, transport and licensing.</span><span class="topic-action">Practice core questions <span aria-hidden="true">→</span></span>
+        </button>
+        <button class="topic-card" type="button" data-filter="Group 1: Petroleum & Gas Supply">
+          <span class="topic-number">GROUP 1 · 5 QUESTIONS</span><span class="topic-title">Petroleum &amp; Gas Supply</span><span class="topic-description">Petroleum measures and the Gas Supply Act 1993.</span><span class="topic-action">Practice this group <span aria-hidden="true">→</span></span>
+        </button>
+        <button class="topic-card" type="button" data-filter="Group 2: Environment & Pesticides">
+          <span class="topic-number">GROUP 2 · 5 QUESTIONS</span><span class="topic-title">Environment &amp; Pesticide</span><span class="topic-description">Environmental quality, pollution controls and pesticide rules.</span><span class="topic-action">Practice this group <span aria-hidden="true">→</span></span>
+        </button>
+        <button class="topic-card" type="button" data-filter="Group 3: Uniform Building By-Laws">
+          <span class="topic-number">GROUP 3 · 5 QUESTIONS</span><span class="topic-title">Uniform Building</span><span class="topic-description">Building submissions, open spaces, temporary works and loads.</span><span class="topic-action">Practice this group <span aria-hidden="true">→</span></span>
+        </button>
+      </div>
+      <p class="disclaimer">Peer practice resource. Refer to current legislation and official NIOSH materials for authoritative guidance.</p>
+    </section>
+
+    <section class="practice" id="practice" aria-labelledby="practice-title" hidden>
+      <div class="practice-heading"><div><p class="eyebrow eyebrow-dark">Interactive practice</p><h2 id="practice-title">Quiz</h2></div><a class="text-link" href="index.html" target="_blank" rel="noopener">Open quiz in a new tab ↗</a></div>
+      <iframe id="quiz-frame" title="NIOSH SHO legislation practice quiz" src="index.html"></iframe>
+    </section>
+  </main>
+  <footer><span>SHO Module 1 Practice</span><a href="index.html">Go to the full quiz</a></footer>
+</body>
+</html>
