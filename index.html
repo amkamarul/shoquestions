@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIOSH SHO Module 1 – Legislation Practice Quiz</title>
+  <title>NIOSH SHO Module 1 – 30-Question Revision Quiz</title>
   <style>
     :root {
-      --bg: #f4f6f9;
+      --bg: #eef3f7;
       --card: #ffffff;
-      --primary: #1e3a8a;
-      --primary-hover: #1d4ed8;
-      --accent: #0f766e;
+      --navy: #162d4c;
+      --navy-dark: #0f2138;
+      --teal: #137a6e;
+      --teal-light: #e3f2ef;
+      --teal-border: #b8ded7;
       --text: #1e293b;
-      --muted: #64748b;
-      --border: #e2e8f0;
+      --muted: #52637a;
+      --border: #dce4ec;
       --correct-bg: #dcfce7;
       --correct-border: #16a34a;
       --correct-text: #14532d;
@@ -23,131 +25,170 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      padding: 24px 16px 60px;
+      line-height: 1.55;
+      padding: 24px 16px 64px;
     }
-    .container {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    .container { max-width: 940px; margin: 0 auto; }
+    header.app-header {
+      background: linear-gradient(135deg, #10233c 0%, #162d4c 65%, #137a6e 100%);
       color: #fff;
-      padding: 28px 28px 24px;
+      padding: 30px 30px 26px;
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
-      margin-bottom: 24px;
+      box-shadow: 0 12px 28px rgba(15, 33, 56, 0.16);
+      margin-bottom: 22px;
     }
-    .badge {
+    .app-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.15);
+      color: #8ce9db;
       font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 999px;
       margin-bottom: 10px;
     }
-    header h1 {
-      font-size: 1.65rem;
-      margin-bottom: 6px;
+    header.app-header h1 {
+      font-size: 1.72rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
     }
-    header p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
+    header.app-header p {
+      color: #d1e3f0;
+      font-size: 0.96rem;
+      max-width: 780px;
     }
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .filter-btn {
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       background: var(--card);
-      color: var(--text);
-      padding: 9px 14px;
+      color: var(--navy);
+      padding: 9px 15px;
       border-radius: 10px;
       font-size: 0.88rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.15s ease;
     }
     .filter-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      border-color: var(--teal);
+      color: var(--teal);
     }
     .filter-btn.active {
-      background: var(--primary);
+      background: var(--navy);
       color: #fff;
-      border-color: var(--primary);
+      border-color: var(--navy);
     }
     .scoreboard {
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: 12px;
       padding: 14px 20px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      box-shadow: 0 6px 16px rgba(22, 45, 76, 0.08);
     }
     .score-stats {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
+      color: var(--navy);
     }
     .score-stats span {
-      color: var(--primary);
-      font-weight: 700;
+      color: var(--teal);
+      font-weight: 800;
     }
-    .reset-btn {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      color: #334155;
-      padding: 7px 14px;
+    .action-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      background: var(--teal-light);
+      border: 1px solid var(--teal-border);
+      color: var(--navy);
+      padding: 8px 14px;
       border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.84rem;
+      font-weight: 700;
       cursor: pointer;
+      transition: all 0.15s ease;
     }
-    .reset-btn:hover {
+    .action-btn:hover {
+      background: #cce7e1;
+    }
+    .action-btn.reset {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+    .action-btn.reset:hover {
       background: #e2e8f0;
     }
     .question-card {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px 24px;
-      margin-bottom: 18px;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 34px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 18px rgba(15, 33, 56, 0.06);
     }
     .q-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
     }
-    .q-group {
-      background: #e0e7ff;
-      color: #1e3a8a;
-      padding: 3px 10px;
-      border-radius: 6px;
+    .q-eyebrow {
+      font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1e40af;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
     .q-slide {
-      color: var(--muted);
+      background: #edf2f7;
+      color: var(--navy);
+      padding: 4px 11px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .q-headline {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+      line-height: 1.2;
     }
     .q-title {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: 600;
-      margin-bottom: 16px;
+      color: #0f172a;
+      line-height: 1.55;
+      margin: 0 0 16px;
     }
     .options-list {
       display: flex;
@@ -160,25 +201,49 @@
       border: 1.5px solid var(--border);
       border-radius: 10px;
       padding: 12px 16px;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--text);
       cursor: pointer;
       transition: all 0.15s ease;
+      line-height: 1.45;
     }
     .option-btn:hover:not(:disabled) {
-      border-color: var(--primary);
-      background: #eff6ff;
+      border-color: var(--teal);
+      background: #f0fdfa;
     }
     .option-btn.correct {
       background: var(--correct-bg);
       border-color: var(--correct-border);
       color: var(--correct-text);
-      font-weight: 600;
+      font-weight: 700;
     }
     .option-btn.wrong {
       background: var(--wrong-bg);
       border-color: var(--wrong-border);
       color: var(--wrong-text);
+    }
+    .card-footer {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .show-ans-btn {
+      background: var(--navy);
+      border: none;
+      color: #ffffff;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .show-ans-btn:hover {
+      background: var(--teal);
     }
     .feedback {
       margin-top: 14px;
@@ -200,30 +265,36 @@
       color: #991b1b;
       border-left: 4px solid #dc2626;
     }
+    @media (max-width: 640px) {
+      .question-card { padding: 22px 18px; }
+      .scoreboard { align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <div class="badge">NIOSH Malaysia • Safety and Health Officer (SHO) Module 1</div>
-      <h1>Other Related Legislation & Codes of Practice Quiz</h1>
-      <p>Interactive peer practice covering Petroleum (Safety Measures) Act 1984, Gas Supply Act 1993, Environmental Quality Act 1974, Pesticides Act 1974 & Uniform Building By-Laws 1984.</p>
+    <header class="app-header">
+      <div class="app-badge">NIOSH Malaysia • Safety and Health Officer (SHO) Module 1</div>
+      <h1>Other Related Legislation – 30-Question Revision Quiz</h1>
+      <p>Practice the revised set of NIOSH Module 1 questions across Petroleum & Gas Supply, Environment & Pesticides, and Uniform Building. Use the filters to focus on each group.</p>
     </header>
 
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="setFilter('ALL', this)">All Questions (25)</button>
-      <button class="filter-btn" onclick="setFilter('PSMA Core', this)">PSMA 1984 Core (10)</button>
-      <button class="filter-btn" onclick="setFilter('Group 1: Petroleum & Gas Supply', this)">Group 1: Petroleum & Gas (5)</button>
-      <button class="filter-btn" onclick="setFilter('Group 2: Environment & Pesticides', this)">Group 2: EQA & Pesticides (5)</button>
-      <button class="filter-btn" onclick="setFilter('Group 3: Uniform Building By-Laws', this)">Group 3: UBBL 1984 (5)</button>
+      <button class="filter-btn active" onclick="setFilter('ALL', this)">All Questions (30)</button>
+      <button class="filter-btn" onclick="setFilter('Group 1: Petroleum & Gas Supply', this)">Group 1: Petroleum &amp; Gas (10)</button>
+      <button class="filter-btn" onclick="setFilter('Group 2: Environment & Pesticides', this)">Group 2: Environment &amp; Pesticides (10)</button>
+      <button class="filter-btn" onclick="setFilter('Group 3: Uniform Building', this)">Group 3: Uniform Building (10)</button>
     </div>
 
     <div class="scoreboard">
       <div class="score-stats">
-        Answered: <span id="answered-count">0</span> / <span id="total-count">25</span> &nbsp;|&nbsp;
+        Answered: <span id="answered-count">0</span> / <span id="total-count">30</span> &nbsp;|&nbsp;
         Correct: <span id="correct-count">0</span> (<span id="percent-score">0%</span>)
       </div>
-      <button class="reset-btn" onclick="resetQuiz()">Reset Quiz</button>
+      <div class="action-btns">
+        <button class="action-btn" onclick="showAllAnswers()">Show All Answers</button>
+        <button class="action-btn reset" onclick="resetQuiz()">Reset Quiz</button>
+      </div>
     </div>
 
     <div id="quiz-container"></div>
@@ -233,353 +304,423 @@
     const questions = [
       {
         id: 1,
-        group: "PSMA Core",
-        slide: "Slide 10",
-        q: "During a workplace audit, a technician dispenses diesel from a drum and stacks sealed kerosene tins onto a motor trailer parked inside a depot. Under Part I of the Petroleum (Safety Measures) Act 1984, how are these activities legally classified?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 6–8",
+        q: "During a regulatory compliance audit, an SHO checks the statutory history of the Petroleum (Safety Measures) Act 1984 and its amendment Act A807. When were Act 302 and Act A807 gazetted, and what were the key purposes of Act A807?",
         options: [
-          "Petroleum storage",
-          "Pipeline transportation",
-          "Exempt domestic handling",
-          "Refinery processing only"
+          "Act 302 on 28 June 1984; Act A807 on 12 September 1991; to repeal unnecessary provisions and add new provisions",
+          "Act 302 on 14 March 1974; Act A807 on 4 February 1993; to transfer enforcement to the Pesticides Board",
+          "Act 302 on 29 August 1974; Act A807 on 21 February 2017; to regulate scheduled wastes",
+          "Act 302 on 1 January 1984; Act A807 on 31 December 2021; to introduce demolition bylaws"
         ],
         answer: 0,
-        explanation: "Under Part I (Slide 10), 'Storage' includes processing, dispensing, or transfer of petroleum, as well as putting into store or stacking at a place or in an aircraft, motor vehicle, motor trailer, or vessel."
+        explanation: "Act 302 was gazetted on 28 June 1984, and Act A807 was gazetted on 12 September 1991. Act A807 repealed unnecessary provisions and added new provisions."
       },
       {
         id: 2,
-        group: "PSMA Core",
-        slide: "Slide 9",
-        q: "An SHO is preparing a compliance register for petroleum products stored at a facility under Part I of the Petroleum (Safety Measures) Act 1984. Which pair of physical properties determines whether a petroleum product is categorized under Class I, Class II, or Class III?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 9–11",
+        q: "Under Part I and Schedule Section 2(1) of the Petroleum (Safety Measures) Act 1984, which statement is correct?",
         options: [
-          "Viscosity and specific gravity",
-          "Flash point and boiling point",
-          "Auto-ignition temperature and vapour density",
-          "Octane rating and sulphur content"
+          "Handling includes touching, feeling, grasping, transferring or decanting by hand or assisted means; Classes I–III depend on flash point and boiling point; Schedule 2(1) includes propane and asphalt/bitumen",
+          "Handling covers only pipeline pumping; Classes I–III depend on viscosity; methanol is listed in Schedule 2(1)",
+          "Storage excludes stacking in vehicles or trailers; inspectors are appointed by the Port Officer; asphalt/bitumen is excluded",
+          "Handling and storage apply only to offshore platforms under FMA 1967"
         ],
-        answer: 1,
-        explanation: "Under Part I (Slide 9), Classes of Petroleum (Class I to Class III) are determined depending on the flash point and boiling point."
+        answer: 0,
+        explanation: "Handling includes touching, transferring, or decanting by hand or assisted means; Class I–III depends on flash point and boiling point; Schedule 2(1) includes propane and asphalt/bitumen."
       },
       {
         id: 3,
-        group: "PSMA Core",
-        slide: "Slide 11",
-        q: "A manufacturing plant keeps four chemical substances in bulk tanks: naphta, reformate, base oil, and methanol. Based on Schedule Section 2(1) of the Petroleum (Safety Measures) Act 1984, which substance is NOT listed as a petroleum by-product?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 8 & 12–15",
+        q: "Which combination correctly matches the transport and equipment provisions in the Petroleum (Safety Measures) Act 1984?",
         options: [
-          "Naphta",
-          "Reformate",
-          "Base oil",
-          "Methanol"
+          "Part II road/rail: workers informed of Act; Part III water: notify Inspector and obtain Port Officer permission; Part IV air: no air transport except aircraft fuel without Minister approval; Part V pipelines: Minister approval required for pipeline and land works; Part VII utilization, VIII existing equipment, IX rectification, X liabilities",
+          "Part II is about scheduled wastes; Part III governs building plans; Part IV is for pesticides; Part V is fuel tariffs",
+          "Part VII covers pesticide licensing; VIII covers UBBL; IX covers gas tariffs; X covers licensing for LPG",
+          "Parts II–V are optional and do not require approval"
         ],
-        answer: 3,
-        explanation: "Schedule Section 2(1) (Slide 11) lists methane, ethane, propane, butane, gasoline, naphta, reformate, kerosene, diesel, base oil, lubricating oil, asphalt/bitumen, grease and wax, and fuel oil. Methanol is not in the schedule."
+        answer: 0,
+        explanation: "Parts II–V govern road/rail, water, air, and pipelines respectively; Part VII covers equipment utilization, Part VIII existing equipment, Part IX rectification, and Part X liabilities."
       },
       {
         id: 4,
-        group: "PSMA Core",
-        slide: "Slide 11",
-        q: "A warehouse supervisor claims that liquefied propane and solid asphalt/bitumen are excluded from Schedule Section 2(1) of the Petroleum (Safety Measures) Act 1984. Which statement accurately reflects Schedule Section 2(1)?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 16–17",
+        q: "An explosion and fire at a licensed petroleum depot causes serious injury. Under Part VI, which statement is correct?",
         options: [
-          "Only liquid fuels like gasoline and diesel are included.",
-          "Both liquefied propane and asphalt/bitumen are included in the schedule.",
-          "Propane is included only in gas form, while asphalt/bitumen is excluded.",
-          "Neither propane nor asphalt/bitumen is covered under the Act."
+          "Accident notice must be submitted within 24 hours to the Minister; containers must be labelled; insulting an inquiry officer may lead to 3 months imprisonment or RM 2,000 fine or both",
+          "Accident notice must be submitted within 7 days to the Port Officer; insulting an inquiry officer carries a RM 50,000 fine",
+          "Containers under 500 litres need no label; notices go to the Pesticides Board within 48 hours",
+          "Only fatal accidents must be notified; inquiry officers cannot impose imprisonment"
         ],
-        answer: 1,
-        explanation: "Schedule Section 2(1) (Slide 11) includes methane, ethane, propane, and butane (either in gas or liquid form) as well as asphalt/bitumen."
+        answer: 0,
+        explanation: "Part VI requires accident notice within 24 hours to the Minister and includes a maximum 3 months imprisonment or RM 2,000 fine or both for insulting an inquiry officer."
       },
       {
         id: 5,
-        group: "PSMA Core",
-        slide: "Slide 12",
-        q: "A logistics operator transports diesel and gasoline across Peninsular Malaysia using road tankers and railway freight wagons. Under Part II of the Petroleum (Safety Measures) Act 1984, which specific obligation applies to the operator regarding its personnel?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slide 17",
+        q: "A workshop stores 200 litres of Class 1C petroleum in a mobile tank, 420 litres of Class III lubricating oil in stationary drums, and 60 kg of LPG in domestic cylinders. Which item exceeds the exemption limit under Part VI?",
         options: [
-          "Ensure workers are informed of the Act, its Regulations, and its provisions",
-          "Obtain prior written approval from the port officer before each trip",
-          "Submit a 24-hour advance manifest to the Energy Commission",
-          "Register all drivers as Pesticides Licensing Officers"
+          "60 kg LPG in domestic cylinders",
+          "200 litres Class 1C in mobile tank",
+          "420 litres Class III in stationary drums",
+          "A 1-day supply of diesel for industrial use"
         ],
         answer: 0,
-        explanation: "Under Part II (Slide 12), one of the main provisions is ensuring that workers are informed of the Act/Regulations and its provisions."
+        explanation: "The exemption for domestic LPG is less than 50 kg; 60 kg exceeds the limit. The other items remain within the statutory thresholds."
       },
       {
         id: 6,
-        group: "PSMA Core",
-        slide: "Slide 13",
-        q: "A tanker vessel carrying bulk kerosene is approaching a Malaysian port to offload its cargo. Under Part III of the Petroleum (Safety Measures) Act 1984, which combination of regulatory actions is required?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 19–21 & 23",
+        q: "An SHO is preparing a legal briefing on the Gas Supply Act 1993. What is the Act number, gazette date, and what does the term 'gas' include?",
         options: [
-          "Notify the Inspector of arrival and obtain unloading permission from the port officer",
-          "Obtain prior air transport approval from the Minister only",
-          "Apply to the Pesticides Board for a discharge permit",
-          "Notify the Director General of Environmental Quality within 48 hours"
+          "Act 501; gazetted on 4 February 1993; gas means natural gas, LNG, or LPG",
+          "Act 302; gazetted on 28 June 1984; gas means oxygen, nitrogen, industrial air",
+          "Act 127; gazetted on 14 March 1974; gas means reformate, naphta and bitumen vapour",
+          "Act 149; gazetted on 29 August 1974; gas means agricultural fumigant vapours"
         ],
         answer: 0,
-        explanation: "Part III (Slide 13) requires notification to the Inspector of a vessel coming into port and permission of the port officer to unload or discharge petroleum from a vessel."
+        explanation: "Gas Supply Act 1993 is Act 501, gazetted on 4 February 1993, and gas is defined to include natural gas, LNG, and LPG."
       },
       {
         id: 7,
-        group: "PSMA Core",
-        slide: "Slide 14",
-        q: "An offshore operator plans to fly a helicopter carrying spare drums of lubricating oil and fuel oil to a remote platform, in addition to the aviation fuel in the helicopter's own tanks. Under Part IV of the Petroleum (Safety Measures) Act 1984, what authorization is required?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slide 22",
+        q: "According to Part I of the Gas Supply Act 1993, where does the Act's application begin and what are the pressure ranges for the feeder and distribution lines?",
         options: [
-          "Prior approval from the Minister for the cargo drums only",
-          "Prior approval from the Minister for both the helicopter's tank fuel and cargo drums",
-          "Permission from the port officer before takeoff",
-          "No approval is required for lubricating oil or fuel oil"
+          "Downstream of the last flange of the city gate station; feeder line 150–260 psig; distribution line 35–50 psig; residential 0.43 psig; commercial 4.3 psig; industry above 20 psig is not regulated by the Energy Commission",
+          "At the offshore wellhead; feeder line 35–50 psig; distribution line 0.43 psig; industry is regulated by the Energy Commission",
+          "Upstream of the city gate station; residential pressure 20 psig; commercial 150 psig",
+          "Only in factories under the Factories and Machinery Act 1967"
         ],
         answer: 0,
-        explanation: "Part IV (Slide 14) states there shall be no transportation of petroleum by air other than that used to operate the aircraft unless with prior approval of the Minister."
+        explanation: "The Act starts downstream of the last flange of the city gate station, and the feeder/distribution pressures are 150–260 psig and 35–50 psig respectively. Residential supply is 0.43 psig, commercial 4.3 psig, and industry above 20 psig is not regulated by the Energy Commission."
       },
       {
         id: 8,
-        group: "PSMA Core",
-        slide: "Slide 15",
-        q: "A petrochemical facility schedules routine pipeline inspection, minor repair, and associated land excavation works along its existing petroleum pipeline. Under Part V of the Petroleum (Safety Measures) Act 1984, which of these activities requires the approval of the Minister?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 23–24",
+        q: "Under Part I of the Gas Supply Act 1993, how are a 'City Gate station', 'Competent Person', and 'Pipelines' defined?",
         options: [
-          "Only new pipeline placement requires approval",
-          "The inspection, repair, and associated land works",
-          "Only offshore pipelines require approval",
-          "None, provided a local building permit is obtained"
+          "City Gate station is the station where gas is received from transmission pipelines and measured/pressure-regulated before distribution; Competent Person holds a certificate of competency; Pipelines include all installations through which gas moves for regasification, transportation or distribution",
+          "City Gate station is an offshore rig; Competent Person is any mechanical engineer; Pipelines are only underground steel pipes",
+          "City Gate station is a retail petrol kiosk; Competent Person is a Petroleum Inspector; Pipelines are road tankers",
+          "City Gate station is a scheduled waste incinerator; Competent Person is a Pesticides Licensing Officer; Pipelines are building rising mains"
         ],
-        answer: 1,
-        explanation: "Part V (Slide 15) requires approval of the Minister for all pipeline works, which include placing, inspection, maintenance, coordinate, repair, change, and upgrade of pipelines, as well as land works for those purposes."
+        answer: 0,
+        explanation: "A City Gate station is the gas measurement and pressure regulating station receiving gas from transmission pipelines; a Competent Person holds a certificate of competency; pipelines include all installations through which gas moves for regasification, transport, or distribution."
       },
       {
         id: 9,
-        group: "PSMA Core",
-        slide: "Slide 17",
-        q: "Four premises store petroleum without holding a petroleum storage and handling licence. Under Part VI of the Petroleum (Safety Measures) Act 1984, which storage arrangement is NOT exempt from licensing?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 25–27",
+        q: "Under the Gas Supply Act, what are the department duties, licensee powers, and the coverage of Parts VII, VIII and X?",
         options: [
-          "80 litres of Class 1A petroleum",
-          "300 litres of Class 1B petroleum in a mobile tank",
-          "400 litres of Class II petroleum in stationary drums",
-          "40 kg of LPG in cylinders for domestic use"
+          "Department duties include appointments, DG functions, power of entry, enquiry and prosecution, and licenses; licensees may determine tariffs, land entry, deposits, and metering charges; Part VII covers Inquiry, Part VIII offences and penalties, Part X power to make regulations",
+          "Licensees cannot enter land or set deposits, and tariffs are set by the Port Officer",
+          "Part VII covers scheduled wastes, Part VIII building demolition, and Part X pesticides registration",
+          "Only the Pesticides Board can prosecute"
         ],
-        answer: 1,
-        explanation: "Under Part VI (Slide 17), exemptions apply to <95L Class 1A, <450L Class 1B/1C/II/III, <225L Class 1B/1C/II/III in a mobile tank, 1 day supply or less for industrial use, and <50 kg LPG in cylinder for domestic use. 300L in a mobile tank exceeds the 225L mobile tank limit."
+        answer: 0,
+        explanation: "The gas department administers appointments and licensing; licensees may determine tariffs and enter land for construction/maintenance; Part VII is inquiry, Part VIII offences and penalties, and Part X power to make regulations."
       },
       {
         id: 10,
-        group: "PSMA Core",
-        slide: "Slides 16–17",
-        q: "An explosion at a licensed petroleum storage facility causes serious injury to an employee, leading to a formal inquiry instructed by the Minister. Under Part VI of the Petroleum (Safety Measures) Act 1984, what is the required accident notification rule and the maximum penalty for insulting the person conducting the inquiry?",
+        group: "Group 1: Petroleum & Gas Supply",
+        slide: "Slides 28–29",
+        q: "According to the Miscellaneous and General provisions of the Gas Supply Act 1993, which statement is correct?",
         options: [
-          "Within 24 hours to the Minister; 3 months imprisonment or RM 2,000 fine or both",
-          "Within 48 hours to the Inspector; 6 months imprisonment or RM 5,000 fine",
-          "Within 7 days to DOSH; RM 10,000 fine only",
-          "Immediately to the Port Officer; 1 year imprisonment"
+          "The Act is not applicable to factories under the Factories and Machinery Act 1967; it resolves previous inconsistencies with PSMA 1984, Petroleum Development Act 1974 and FMA 1967; gas works must be carried out by a Competent Person; serious accidents must be reported; the Director General and officers are protected from prosecution; emergency power may be delegated by the Yang di-Pertuan Agong",
+          "The Act applies exclusively to factories and repeals EQA 1974",
+          "Emergency powers are delegated by the Port Officer and can be carried out by any worker",
+          "The Director General has no legal protection and accidents are only reported by the Fire Department"
         ],
         answer: 0,
-        explanation: "Part VI (Slides 16–17) mandates submission of an accident notice within 24 hours to the Minister, and sets a maximum penalty of 3 months imprisonment or RM 2,000 or both for insulting persons conducting an inquiry."
+        explanation: "The Act excludes factories under the Factories and Machinery Act 1967, harmonizes with earlier laws, and requires gas works to be done by a Competent Person; serious accidents must be reported and the Director General may receive emergency power delegation."
       },
       {
         id: 11,
-        group: "Group 1: Petroleum & Gas Supply",
-        slide: "Slide 9",
-        q: "A technician manually decants naphta from a drum into smaller containers using a hand-operated siphon. Under Part I of the Petroleum (Safety Measures) Act 1984, how is this action legally defined, and under which section is an Inspector of petroleum appointed?",
+        group: "Group 2: Environment & Pesticides",
+        slide: "Slide 34",
+        q: "An industrial operator argues that sound, odour and visual degradation are excluded from the definition of 'environment' under the Environmental Quality Act 1974. Which statement refutes that argument?",
         options: [
-          "Handling; Section 38",
-          "Storage; Section 2(1)",
-          "Utilization; Section 15",
-          "Dispensing; Section 42"
+          "Part I defines environment as physical, biological and social factors, including air, water, land, climate, sound, odour, taste and the social factor of aesthetics",
+          "Only land and water are included; sound and odour are excluded",
+          "Only geological strata are included; aesthetics are not recognized",
+          "Only scheduled waste factors are included"
         ],
         answer: 0,
-        explanation: "Part I (Slide 9) defines 'Handling' as including the action of touching, feeling, grasping, transferring, or decanting with the hand or assisted by any means, and states an Inspector is appointed under Section 38."
+        explanation: "The definition includes physical factors such as land, water, atmosphere, climate, sound, odour and taste, and the social factor of aesthetics."
       },
       {
         id: 12,
-        group: "Group 1: Petroleum & Gas Supply",
-        slide: "Slide 8",
-        q: "During an inspection of an older refinery, an enforcement officer evaluates pre-existing petroleum appliances and exercises statutory authority to order corrective measures. Under the Petroleum (Safety Measures) Act 1984, which two Parts govern existing equipment/installations and general powers for rectification, respectively?",
+        group: "Group 2: Environment & Pesticides",
+        slide: "Slides 33 & 37",
+        q: "A factory operates prescribed premises with atmospheric, noise and soil emissions, and also generates scheduled wastes. Which parts of the Environmental Quality Act 1974 govern pollution control and scheduled waste control?",
         options: [
-          "Part VI and Part VII",
-          "Part VIII and Part IX",
-          "Part IX and Part X",
-          "Part VII and Part XI"
+          "Part IV for pollution control and Part IVA for scheduled waste control",
+          "Part II and Part III",
+          "Part V and Part VA",
+          "Part I and Part VI"
         ],
-        answer: 1,
-        explanation: "Slide 8 lists Part VIII as 'Existing Equipment, Gadgets, Materials, Plants, Appliances, Buildings, Structures and Installations' and Part IX as 'General Powers for Rectification'."
+        answer: 0,
+        explanation: "Part IV covers prohibition and control of pollution, while Part IVA covers control of scheduled wastes."
       },
       {
         id: 13,
-        group: "Group 1: Petroleum & Gas Supply",
-        slide: "Slide 22",
-        q: "A gas utility distributes natural gas through a piped network to residential and commercial premises. Under Part I of the Gas Supply Act 1993 (Act 501), at which exact point does the Act's application for pipeline supply begin?",
+        group: "Group 2: Environment & Pesticides",
+        slide: "Slide 39",
+        q: "Enforcement officers suspect an industrial occupier and a moored vessel of illegally discharging pollutants. Under Part VI of the EQA 1974, what enforcement measure is explicitly granted?",
         options: [
-          "At the offshore production wellhead",
-          "Upstream of the transmission compressor station",
-          "Downstream of the last flange of the city gate station",
-          "At the consumer's appliance burner tip only"
+          "Power to stop, board, search and compound offences",
+          "Power to demolish buildings under Act 133",
+          "Power to fix gas tariffs",
+          "Power to issue temporary building permits"
         ],
-        answer: 2,
-        explanation: "Part I of the Gas Supply Act 1993 (Slide 22) applies to supply to users using pipelines downstream of the last flange of the city gate station, or from the storage tank/cylinder to any apparatus in any premise."
+        answer: 0,
+        explanation: "Part VI includes powers such as stopping, boarding, searching, and compounding offences."
       },
       {
         id: 14,
-        group: "Group 1: Petroleum & Gas Supply",
-        slide: "Slide 28",
-        q: "An SHO is auditing gas piping compliance at a manufacturing plant that is legally classified as a factory under the Factories and Machinery Act 1967. How does the Gas Supply Act 1993 apply to this facility?",
+        group: "Group 2: Environment & Pesticides",
+        slide: "Slides 47–48",
+        q: "A registered pesticide importer discovers unexpected toxic effects after field use, while a local agro-dealer stores and sells the product. Under the Pesticides Act 1974, what are their obligations?",
         options: [
-          "The Act applies only if gas pressure is below 20 psig.",
-          "The Act is not applicable to the factory.",
-          "The factory must hold a dual retail licence under the Energy Commission.",
-          "The Act applies only to the factory's administrative offices."
+          "Inform the Pesticides Board of adverse effects; hold a licence to sell or store the pesticide",
+          "Notify the Port Officer in 24 hours; register as a Competent Person",
+          "Apply to the Appeal Board; submit building plans",
+          "Pay environmental cess; obtain a gas supply permit"
         ],
-        answer: 1,
-        explanation: "Under Miscellaneous provisions of the Gas Supply Act 1993 (Slide 28), the Act is not applicable to factories (as defined in the Factories and Machinery Act 1967)."
+        answer: 0,
+        explanation: "Under Part III, registrants must inform the Pesticides Board about adverse effects; under Part IV, a licence is required to manufacture, sell or store pesticides."
       },
       {
         id: 15,
-        group: "Group 1: Petroleum & Gas Supply",
-        slide: "Slides 24 & 29",
-        q: "During a severe gas supply emergency, special statutory powers must be delegated to the Director General while technical pipeline rectification is carried out on site. Under the Gas Supply Act 1993, who delegates emergency powers to the Director General, and who is legally required to carry out the gas works?",
+        group: "Group 2: Environment & Pesticides",
+        slide: "Slide 49",
+        q: "A food distributor is prosecuted for selling produce contaminated with pesticide residue. Which defence is recognized under Part V, and which defence is rejected?",
         options: [
-          "The Yang di-Pertuan Agong; a Competent Person",
-          "The Port Officer; a Petroleum Inspector",
-          "The Pesticides Board; a Principal Submitting Person",
-          "The Local Authority; an Environmental Quality Officer"
+          "Reliance on a written warranty is valid; ignorance of contamination is not",
+          "Ignorance is valid; reliance on written warranty is not",
+          "Holding a storage licence is a complete defence; lack of laboratory analysis is not",
+          "Both ignorance and verbal supplier assurances are valid"
         ],
         answer: 0,
-        explanation: "Slide 29 states that works are required to be carried out by a Competent Person (defined on Slide 24) and provides for delegation of power to the Director General by the Yang di-Pertuan Agong in an emergency."
+        explanation: "The Act recognizes reliance on a written warranty or statement, but ignorance of contamination is not a defence."
       },
       {
         id: 16,
         group: "Group 2: Environment & Pesticides",
-        slide: "Slide 34",
-        q: "An industrial operator argues that excessive sound, foul odour, and visual degradation of the surrounding landscape are excluded from the legal definition of 'environment' under the Environmental Quality Act 1974 (Act 127). Which combination of factors in Part I refutes this argument?",
+        slide: "Slide 52",
+        q: "Which statement best describes the purpose of the Environmental Quality Act 1974?",
         options: [
-          "Physical factors and the social factor of aesthetics",
-          "Scheduled waste factors and industrial plant factors only",
-          "Chemical factors and geological strata factors only",
-          "Meteorological factors and maritime factors only"
+          "To prevent, reduce and control pollution and to protect environmental quality and public health",
+          "To oversee only industrial plant licensing under the Factories and Machinery Act",
+          "To regulate petroleum storage and handling alone",
+          "To govern building plans and demolition"
         ],
         answer: 0,
-        explanation: "Part I of EQA 1974 (Slide 34) defines 'Environment' as the physical factors of the surroundings of human beings (including land, water, atmosphere, climate, sound, odour, taste), biological factors of animals and plants, and the social factor of aesthetics."
+        explanation: "The EQA 1974 is designed to prevent, reduce and control pollution and protect environmental quality and public health."
       },
       {
         id: 17,
         group: "Group 2: Environment & Pesticides",
-        slide: "Slides 33 & 37",
-        q: "A factory intends to operate prescribed premises with potential atmospheric, noise, and soil emissions while also generating toxic industrial residues classified as scheduled wastes. Which Parts of the Environmental Quality Act 1974 govern general pollution restrictions and the control of scheduled wastes, respectively?",
+        slide: "Slide 36",
+        q: "A factory owner argues that offensive odour under a pesticide manufacturing process is not pollution because it is only a temporary smell. Which statement is correct?",
         options: [
-          "Part II and Part III",
-          "Part IV and Part IVA",
-          "Part V and Part VA",
-          "Part I and Part VI"
+          "Odour is included in the definition of 'environment' and may be controlled as pollution under the EQA 1974",
+          "Only visible smoke counts as pollution",
+          "Only scheduled wastes are controlled under the EQA",
+          "Odour is outside the law until it affects workers"
         ],
-        answer: 1,
-        explanation: "Slides 33 and 37 show that Part IV covers Prohibition and Control of Pollution (atmosphere, noise, soil, prescribed premises) and Part IVA covers Control of Scheduled Wastes."
+        answer: 0,
+        explanation: "Odour is part of the physical environment and is included in the definition of environment. It may be regulated as pollution under the EQA 1974."
       },
       {
         id: 18,
         group: "Group 2: Environment & Pesticides",
-        slide: "Slide 39",
-        q: "Enforcement officers suspect an industrial occupier and a moored vessel of illegally discharging pollutants. Under Part VI (Miscellaneous) of the Environmental Quality Act 1974, which enforcement provision is explicitly granted?",
+        slide: "Slides 47–49",
+        q: "Under the Pesticides Act 1974, which of these is NOT a valid legal position?",
         options: [
-          "Power to stop, board, search, and compound offences",
-          "Power to demolish buildings under Act 133",
-          "Power to determine gas supply tariffs",
-          "Power to issue temporary building permits"
+          "A storage licence is a complete defence to all pesticide offences",
+          "Ignorance of contamination is not a defence",
+          "A written warranty may be used as a defence",
+          "The Board must be informed of adverse effects"
         ],
         answer: 0,
-        explanation: "Part VI of EQA 1974 (Slide 39) includes owner/occupier furnishing information, power to stop, board, search, etc., service of notices, penalties, prosecution, and compounding of offences."
+        explanation: "A licence alone is not a complete defence for all offences; the Act expressly rejects ignorance as a defence and recognises a written warranty defence."
       },
       {
         id: 19,
         group: "Group 2: Environment & Pesticides",
-        slide: "Slides 47–48",
-        q: "A company that registered an imported pesticide discovers unexpected toxic side effects after field use, while a local agro-dealer stores and sells that pesticide to farmers. Under Parts III and IV of the Pesticides Act 1974 (Act 149), what are their respective legal obligations?",
+        slide: "Slide 38",
+        q: "Which enforcement power is least characteristic of the EQA 1974 and more characteristic of building control law?",
         options: [
-          "Inform the Board of adverse effects; hold a licence to sell or store",
-          "Notify the Port Officer within 24 hours; register as a Competent Person",
-          "Apply to the Appeal Board; submit building plans for approval",
-          "Pay environmental cess; obtain a City Gate Station permit"
+          "Issuing a temporary building permit",
+          "Power to stop, board, search and compound offences",
+          "Power to direct the owner or occupier to furnish information",
+          "Power to serve notices and prosecute offences"
         ],
         answer: 0,
-        explanation: "Under Part III (Slide 47), the registrant shall inform the Pesticides Board about adverse effects of the pesticide. Under Part IV (Slide 48), a licence is required to manufacture, sell, or store pesticides."
+        explanation: "Issuing a temporary building permit is a building control mechanism rather than an EQA enforcement power."
       },
       {
         id: 20,
         group: "Group 2: Environment & Pesticides",
-        slide: "Slide 49",
-        q: "A food distributor is prosecuted under Part V of the Pesticides Act 1974 for selling produce contaminated with pesticide residue. Which legal defence is recognized under Part V, and which claim is explicitly rejected as a defence?",
+        slide: "Slide 36",
+        q: "Which set of factors is correctly included under the definition of environment in EQA 1974?",
         options: [
-          "Reliance on a written warranty is valid; ignorance of contamination is not",
-          "Ignorance of contamination is valid; reliance on a written warranty is not",
-          "Holding a storage licence is a complete defence; lack of lab analysis is not",
-          "Both ignorance and verbal supplier assurances are valid defences"
+          "Physical, biological and social factors such as sound, odour, aesthetics and plant/animal life",
+          "Only industrial plant and engineered structures",
+          "Only scheduled waste tonnage and disposal permits",
+          "Only meteorological and maritime factors"
         ],
         answer: 0,
-        explanation: "Part V of the Pesticides Act 1974 (Slide 49) states that 'Ignorance of contaminating not a defence' and recognizes the 'Defence of reliance on written warranty or statement'."
+        explanation: "The definition includes physical, biological and social factors such as land, air, water, climate, sound, odour, taste, plant/animal life, and aesthetics."
       },
       {
         id: 21,
-        group: "Group 3: Uniform Building By-Laws",
+        group: "Group 3: Uniform Building",
         slide: "Slides 52–53",
-        q: "A contractor must demolish an old warehouse before constructing a new commercial building. Under which Act are the Uniform Building By-Laws 1984 enacted, and which Part specifically governs the demolition of buildings?",
+        q: "A contractor needs to demolish an old warehouse before constructing a new commercial building. Under which Act and which Part are the Uniform Building By-Laws 1984 enacted?",
         options: [
-          "Act 133; Part IA",
+          "Act 133; Part IA governs demolition",
           "Act 302; Part II",
           "Act 127; Part IVA",
           "Act 501; Part III"
         ],
         answer: 0,
-        explanation: "Slides 52–53 identify the Uniform Building By-Laws 1984 under Act 133, with Part IA covering 'Demolition of buildings'."
+        explanation: "UBBL 1984 are enacted under Act 133, with Part IA covering demolition of buildings."
       },
       {
         id: 22,
-        group: "Group 3: Uniform Building By-Laws",
+        group: "Group 3: Uniform Building",
         slide: "Slides 53 & 55",
-        q: "Midway through a development project, the principal submitting person withdraws and must be replaced while revised building drawings are prepared for approval. Which set of provisions under Part II of the Uniform Building By-Laws 1984 governs these requirements?",
+        q: "Midway through a project, the principal submitting person withdraws and revised building drawings are prepared. Which provisions govern this under Part II?",
         options: [
-          "Withdrawal or change of submitting person, signed plans, and scale of plans",
-          "Open spaces about buildings abutting a street and a backlane",
-          "Permanent and imposed loads and weight of partitions",
-          "Vehicular access to site and rising mains installation"
+          "Withdrawal or change of submitting person, signed plans and scale of plans",
+          "Open spaces and backlane requirements",
+          "Permanent and imposed loads",
+          "Vehicular access and rising main installation"
         ],
         answer: 0,
-        explanation: "Part II (Submission of plans for approval, Slides 53 & 55) covers submission of plans, return of plan, supervision of work, plans to be signed, withdrawal or change of principal submitting person or submitting person, plans to be deposited, and scale of plans."
+        explanation: "Part II covers withdrawal or change of the submitting person, signed plans, and the scale of plans."
       },
       {
         id: 23,
-        group: "Group 3: Uniform Building By-Laws",
+        group: "Group 3: Uniform Building",
         slide: "Slide 56",
-        q: "A commercial building owner constructs a permanent roof over the rear open courtyard of a lot abutting a street and a backlane to create extra storage. Which Part III provision of the Uniform Building By-Laws 1984 does this alteration directly contravene?",
+        q: "A building owner roofs over the rear open courtyard of a lot abutting a street and backlane. Which Part III provision is contravened?",
         options: [
           "Open spaces are not to be altered or roofed",
-          "Rising mains must be installed progressively",
-          "Plans to be deposited in triplicate",
-          "Contents of tanks and other receptacles"
+          "Rising mains must be progressively installed",
+          "Plans must be deposited in triplicate",
+          "Contents of tanks and receptacles"
         ],
         answer: 0,
-        explanation: "Part III (Space, Light and Ventilation, Slide 56) explicitly stipulates that open spaces are to be provided and 'Open spaces not to be altered or roofed'."
+        explanation: "Part III states that open spaces are to be provided and not altered or roofed."
       },
       {
         id: 24,
-        group: "Group 3: Uniform Building By-Laws",
+        group: "Group 3: Uniform Building",
         slide: "Slide 57",
-        q: "During the construction of a high-rise building, an SHO verifies fire-engine access routes and checks that vertical firefighting water pipes are being extended floor by floor as work progresses. Which Part IV requirements of the Uniform Building By-Laws 1984 are being checked?",
+        q: "During construction of a high-rise, an SHO verifies access routes and rising mains. Which requirements are being checked?",
         options: [
           "Vehicular access to site and progressive installation of rising mains",
           "Space about detached buildings and natural ventilation",
           "Supervision of work and scale of plans",
-          "Permanent loads calculated from weights of materials used"
+          "Permanent loads from weights of materials"
         ],
         answer: 0,
-        explanation: "Part IV (Temporary Works in Connection with Building Operations, Slide 57) covers commencement of building operation, temporary permits, vehicular access to site, and rising mains to be installed progressively."
+        explanation: "Part IV on temporary works covers vehicular access to site and the progressive installation of rising mains."
       },
       {
         id: 25,
-        group: "Group 3: Uniform Building By-Laws",
+        group: "Group 3: Uniform Building",
         slide: "Slide 58",
-        q: "A structural engineer calculates the design loads for an upper utility floor that will support heavy dividing walls and filled water storage receptacles. Under Part V of the Uniform Building By-Laws 1984, which specific load items must be accounted for alongside permanent and imposed loads?",
+        q: "A structural engineer calculates design loads for an upper utility floor. Which items must be included alongside permanent and imposed loads?",
         options: [
           "Weight of partitions and contents of tanks and other receptacles",
-          "Flash point and boiling point of stored liquids",
-          "Odoriser station pressure and feeder line capacity",
+          "Flash point and boiling point of liquids",
+          "Odoriser pressure and feeder line capacity",
           "Scheduled waste tonnage and environmental cess"
         ],
         answer: 0,
-        explanation: "Part V (Structural Requirements, Slide 58) specifies building materials, general requirements of loading, permanent and imposed loads, permanent loads calculated from weights of materials used, weight of partitions, and contents of tanks and other receptacles."
+        explanation: "Part V requires consideration of permanent loads, imposed loads, weight of partitions, and contents of tanks/receptacles."
+      },
+      {
+        id: 26,
+        group: "Group 3: Uniform Building",
+        slide: "Slides 54–55",
+        q: "Which document must be signed and submitted before building approval is granted?",
+        options: [
+          "Building plans signed by the principal submitting person or registered architect/engineer",
+          "Only a temporary permit",
+          "Only a sketch from the contractor",
+          "Only an environmental report"
+        ],
+        answer: 0,
+        explanation: "Under Part II, plans for approval must be signed and deposited, and changes to the submitting person are regulated."
+      },
+      {
+        id: 27,
+        group: "Group 3: Uniform Building",
+        slide: "Slide 57",
+        q: "What is one of the main purposes of temporary works requirements under Part IV of the UBBL 1984?",
+        options: [
+          "To ensure fire engine access and safe progressive installation of rising mains during construction",
+          "To regulate the environmental quality permit",
+          "To audit gas tariffs",
+          "To approve pesticide storage"
+        ],
+        answer: 0,
+        explanation: "Part IV covers temporary works such as site access and rising mains installation for fire safety and safe construction."
+      },
+      {
+        id: 28,
+        group: "Group 3: Uniform Building",
+        slide: "Slides 56–58",
+        q: "Which statement is correct regarding structural and ventilation provisions under the UBBL 1984?",
+        options: [
+          "Open spaces and loads are regulated separately; ventilation and space provisions are distinct from structural design loads",
+          "Only the Pesticides Board regulates structural loads",
+          "Building openings are not controlled under the Act",
+          "There is no requirement to consider partitions or tank contents"
+        ],
+        answer: 0,
+        explanation: "Space, light and ventilation are covered separately from structural requirements; each has its own statutory provision."
+      },
+      {
+        id: 29,
+        group: "Group 3: Uniform Building",
+        slide: "Slides 52–58",
+        q: "What is the overall theme of the Uniform Building By-Laws 1984 as reflected across Parts II–V?",
+        options: [
+          "Approval of plans, open spaces, temporary construction safety and structural loads",
+          "Only gas pipeline inspection and licensing",
+          "Only environmental management of scheduled wastes",
+          "Only pesticide registration and sales"
+        ],
+        answer: 0,
+        explanation: "The UBBL 1984 addresses plan submission and approval, open spaces, temporary works, and structural loading requirements."
+      },
+      {
+        id: 30,
+        group: "Group 3: Uniform Building",
+        slide: "Slides 53–58",
+        q: "Which statement best captures the legal focus of the Uniform Building By-Laws 1984?",
+        options: [
+          "To control building design, construction safety, site access, ventilation, and structural loading for safe occupancy",
+          "To set petroleum storage thresholds and environmental quality limits",
+          "To regulate pesticide composition and residue testing",
+          "To control simultaneous gas and environmental compliance only"
+        ],
+        answer: 0,
+        explanation: "The by-laws focus on proper building design, site safety, ventilation/open spaces, and structural load adequacy to ensure safe construction and occupancy."
       }
     ];
 
@@ -589,10 +730,7 @@
     function renderQuiz() {
       const container = document.getElementById("quiz-container");
       container.innerHTML = "";
-
-      const filtered = currentFilter === "ALL"
-        ? questions
-        : questions.filter(q => q.group === currentFilter);
+      const filtered = currentFilter === "ALL" ? questions : questions.filter(q => q.group === currentFilter);
 
       filtered.forEach((item, index) => {
         const card = document.createElement("div");
@@ -627,10 +765,11 @@
 
         card.innerHTML = `
           <div class="q-meta">
-            <span class="q-group">${item.group}</span>
-            <span class="q-slide">Reference: NIOSH ${item.slide}</span>
+            <span class="q-eyebrow">${item.group}</span>
+            <span class="q-slide">Reference: ${item.slide}</span>
           </div>
-          <div class="q-title">Q${index + 1}. ${item.q}</div>
+          <div class="q-headline">Question ${index + 1}</div>
+          <div class="q-title">${item.q}</div>
           <div class="options-list">${optionsHTML}</div>
           ${feedbackHTML}
         `;
@@ -666,6 +805,13 @@
       document.getElementById("total-count").textContent = filtered.length;
       document.getElementById("correct-count").textContent = correct;
       document.getElementById("percent-score").textContent = pct + "%";
+    }
+
+    function showAllAnswers() {
+      questions.forEach(q => {
+        userAnswers[q.id] = q.answer;
+      });
+      renderQuiz();
     }
 
     function resetQuiz() {
